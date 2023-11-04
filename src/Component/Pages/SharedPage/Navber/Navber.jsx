@@ -1,11 +1,24 @@
 
 // Home,Add job,My posted jobs,My Bids,Bid Requests
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 
 const Navber = () => {
+    const {user , LogOut}=useContext(AuthContext)
+    console.log(user);
     const [isScrolled, setIsScrolled] = useState(false);
+    const hanadleLogOut=()=>{
+        LogOut()
+        .then(result =>{
+          console.log(result);
+        })
+        .catch(error =>{
+          console.error(error);
+        })
+      }
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,7 +72,14 @@ const Navber = () => {
     </ul>
   </div>
   <div className="navbar-end">
-   <Link to='/login'><a className="btn">Login</a></Link>
+   {/* <Link to='/login'><a className="btn">Login</a></Link> */}
+   {
+      user ? <button className="btn btn-ghost" onClick={hanadleLogOut} >Log Out</button> 
+      :
+      <Link to='/login'>
+  <button className="btn btn-ghost">Login</button>
+  </Link>
+    }
   </div>
 </div>
            </div>

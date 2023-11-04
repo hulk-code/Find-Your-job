@@ -94,7 +94,9 @@ useEffect(() => {
         </div>
 
       </form>
-      <button onClick={handleGoogleLogin} className="btn "><BiLogoGoogle className="text-2xl"></BiLogoGoogle></button>
+     <div className="mx-auto text-white">
+     <BiLogoGoogle onClick={handleGoogleLogin} className="text-4xl"></BiLogoGoogle>
+     </div>
       <p className=" m-auto font-medium p-3">New Here? PLZ<Link to='/register' className="text-red-700">Register</Link></p>
         
         
