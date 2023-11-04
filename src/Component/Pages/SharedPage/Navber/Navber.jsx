@@ -1,9 +1,31 @@
 
 // Home,Add job,My posted jobs,My Bids,Bid Requests
 
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Navber = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navClasses = `navbar bg-slate-400 font-bold ${
+    isScrolled ? "navbar-minimized" : ""
+  }`;
     const navberRoutes=<>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/addjob'>Add_Job</NavLink></li>
@@ -13,7 +35,8 @@ const Navber = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-slate-400 font-bold">
+           <div className={navClasses}>
+           {/* <div className="navbar bg-slate-400 font-bold"> */}
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -36,10 +59,11 @@ const Navber = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+   <Link to='/login'><a className="btn">Login</a></Link>
   </div>
 </div>
-        </div>
+           </div>
+        // </div>
     );
 };
 
