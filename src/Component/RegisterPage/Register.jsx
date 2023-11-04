@@ -34,7 +34,18 @@ const Register = () => {
       const email = form.get('email')
       console.log(displayName ,email,password);
   
-      
+      if (!/(?=.*[A-Z])/.test(password)) {
+        setError('Please add at least one uppercase.');
+        return
+      }
+      else if (!/(?=.*[!@#$&*])/.test(password)) {
+        setError('Please add a special character.');
+        return
+      }
+      else if (password.length < 6) {
+        setError('Password must be 6 characters long');
+        return
+      }
       createUser(email, password)
         .then(result => {
           console.log(result.user);
