@@ -13,7 +13,7 @@ const Navber = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-base-100 font-bold">
+            <div className="navbar bg-slate-400 font-bold">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -25,10 +25,10 @@ const Navber = () => {
     </div>
     <div className="avatar">
   <div className="w-24 rounded-full">
-    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+    <img src="https://i.ibb.co/hc0BnsD/freelogo.jpg" />
   </div>
 </div>
-    <p>Your Job</p>
+    <p className="ml-5 text-4xl">Free<span className="text-bold text-orange-300">Lancer</span></p>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
