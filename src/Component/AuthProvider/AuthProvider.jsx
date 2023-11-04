@@ -4,7 +4,8 @@ import app from "../../firebase.config/firebase.confige";
 
 
  export const AuthContext=createContext('')
- const auth=getAuth(app)
+  const auth=getAuth(app)
+
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({children}) => {
     const [user ,setUser]=useState('')
@@ -40,6 +41,7 @@ const AuthProvider = ({children}) => {
   },[])
     const authInfo={
         user,
+        auth,
         createUser,
         LogOut,
         logIn,

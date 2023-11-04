@@ -1,11 +1,11 @@
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import 'aos/dist/aos.css'; 
 import AOS from 'aos';
 import { AuthContext } from "../AuthProvider/AuthProvider";
-
+import { BiLogoGoogle } from "react-icons/bi";
 
 
 
@@ -17,7 +17,7 @@ useEffect(() => {
         duration: 1000, 
       });
   }, []);
-    const {logIn }=useContext(AuthContext)
+    const {logIn ,auth }=useContext(AuthContext)
     const provider=new GoogleAuthProvider();
     const [error,setError] = useState('')
     const location=useLocation();
@@ -46,6 +46,18 @@ useEffect(() => {
       }); 
     })
   }
+  const handleGoogleLogin =()=>{
+    signInWithPopup(auth,provider)
+    .then(result =>{
+      console.log(result.user);
+      nevigate(location ?.state ?location.state : '/')
+      
+    })
+    .catch(error =>{
+      console.error(error);
+    })
+}
+
 
     return (
         <div>
@@ -82,6 +94,7 @@ useEffect(() => {
         </div>
 
       </form>
+      <button onClick={handleGoogleLogin} className="btn "><BiLogoGoogle className="text-2xl"></BiLogoGoogle></button>
       <p className=" m-auto font-medium p-3">New Here? PLZ<Link to='/register' className="text-red-700">Register</Link></p>
         
         
