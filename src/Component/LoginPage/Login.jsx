@@ -1,10 +1,20 @@
+import { Link } from "react-router-dom";
 
 
 
 
 
 const Login = () => {
- 
+    const handlLogin= e =>{
+        e.preventDefault();
+        console.log(e.currentTarget);
+        const form=new FormData(e.currentTarget)
+       
+        const password=form.get('password')
+        const email=form.get('email')
+        console.log(password,email);
+        
+    }
 
     return (
         <div>
@@ -17,7 +27,7 @@ const Login = () => {
      
     </div>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-slate-500">
-      <form className="card-body"  >
+      <form className="card-body" onSubmit={handlLogin} >
        
        
        
@@ -39,7 +49,9 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Login</button>
         </div>
+
       </form>
+      <p className=" m-auto font-medium p-3">New Here? PLZ<Link to='/register' className="text-red-700">Register</Link></p>
         
         
     </div>
