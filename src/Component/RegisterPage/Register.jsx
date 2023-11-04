@@ -1,4 +1,9 @@
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import 'aos/dist/aos.css'; 
+import AOS from 'aos';
 
 
 
@@ -6,7 +11,67 @@ import { Link } from "react-router-dom";
 
 
 const Register = () => {
- 
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+  
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState("")
+    const location=useLocation();
+      const nevigate=useNavigate();
+    useEffect(() => {
+      AOS.init({
+          duration: 1000, 
+        });
+    }, []);
+  
+  
+    const handleRegister = e => {
+      e.preventDefault();
+      console.log(e.currentTarget);
+      const form = new FormData(e.currentTarget)
+      const displayName=form.get('displayName')
+      const photoURL=form.get('photoURL')
+      const password = form.get('password')
+      const email = form.get('email')
+      console.log(displayName ,email,password);
+  
+      
+      createUser(email, password)
+        .then(result => {
+          console.log(result.user);
+          
+          
+          updateUserProfile(displayName ,photoURL)
+          .then( () =>{
+            console.log('profilee updte')
+            nevigate(location ?.state ?location.state : '/')
+          }
+          
+          )
+          .catch(error =>{
+            console.error(error);
+          })
+  
+          if (!result.user.emailVerified) {
+            setSuccess('User login successful.');
+  
+            Swal.fire({
+              
+              icon: 'success',
+              title: 'User login successful',
+              showConfirmButton: false,
+              timer: 1500
+            })
+           
+           
+            
+            setError('');
+          }
+             
+        })
+        .catch(error => {
+          console.error(error);
+        })
+    }
   return (
     <div>
      
@@ -17,8 +82,8 @@ const Register = () => {
 
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm  ">
-            <form className="card-body">
-                {/*  onSubmit={handleRegister} */}
+            <form className="card-body"  onSubmit={handleRegister}>
+               
               <div className="flex gap-5 font-bold">
               <div>
               <div className="form-control">
@@ -49,8 +114,8 @@ const Register = () => {
                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                  <p className='text-red-500'> </p>
-                  {/* {error} */}
+                  <p className='text-red-500'>  {error}</p>
+                 
                 </label>
               </div>
               </div>
@@ -61,8 +126,8 @@ const Register = () => {
             </form>
             <p className=" m-auto font-medium p-3 text-lg text-orange-400">have an account?<Link to='/login' className="text-green-500">Login</Link></p>
             
-            <p className='text-green-500 mx-auto'></p>
-            {/* {success} */}
+            <p className='text-green-500 mx-auto'> {success}</p>
+           
           </div>
         </div>
       </div>

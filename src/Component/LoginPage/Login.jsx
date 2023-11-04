@@ -1,20 +1,18 @@
-import { Link } from "react-router-dom";
+import { GoogleAuthProvider } from "firebase/auth";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import 'aos/dist/aos.css'; 
+import AOS from 'aos';
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 
 
 
 const Login = () => {
-    const handlLogin= e =>{
-        e.preventDefault();
-        console.log(e.currentTarget);
-        const form=new FormData(e.currentTarget)
-       
-        const password=form.get('password')
-        const email=form.get('email')
-        console.log(password,email);
-        
-    }
+    
+
 
     return (
         <div>
@@ -55,7 +53,7 @@ const Login = () => {
         
         
     </div>
-      <p className='text-red-500'> {/* {error} */}</p>
+      <p className='text-red-500'> {error}</p>
       
       
       
