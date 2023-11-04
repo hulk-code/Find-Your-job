@@ -12,7 +12,40 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Login = () => {
     
+useEffect(() => {
+    AOS.init({
+        duration: 1000, 
+      });
+  }, []);
+    const {logIn }=useContext(AuthContext)
+    const provider=new GoogleAuthProvider();
+    const [error,setError] = useState('')
+    const location=useLocation();
+    const nevigate=useNavigate();
+    const handlLogin= e =>{
+    e.preventDefault();
+    console.log(e.currentTarget);
+    const form=new FormData(e.currentTarget)
+   
+    const password=form.get('password')
+    const email=form.get('email')
+    console.log(password,email);
+    logIn(email,password)
+    .then(result =>{
+      console.log(result.user);
+      nevigate(location ?.state ?location.state : '/')
 
+    })
+    .catch(error =>{
+      console.error(error);
+      setError(error.message)  
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Error',
+        text: error.message,
+      }); 
+    })
+  }
 
     return (
         <div>
