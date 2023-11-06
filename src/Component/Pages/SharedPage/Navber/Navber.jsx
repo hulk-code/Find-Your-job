@@ -43,7 +43,7 @@ const Navber = () => {
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/addjob'>Add_Job</NavLink></li>
     <li><NavLink to='/mypostedjobs'>My_posted_jobs</NavLink></li>
-    <li><NavLink to='/,mybids'>My_Bids</NavLink></li>
+    <li><NavLink to='/mybids'>My_Bids</NavLink></li>
     <li><NavLink to='/bidrequests'>Bid_Requests</NavLink></li>
     </>
     return (

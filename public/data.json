@@ -1,91 +1,110 @@
 [
-    {  "category":"web development",
-      "JobTitle": "Front-end Web Developer",
-      "Deadline": "2023-03-15",
-      "PriceRange": "$500 - $800",
-      "Description": "Create a responsive, user-friendly website for a small business.",
-      "Bid ": "Bid Now"
-    },
-    {   "category":"web development",
-      "JobTitle": "Full-stack Web Developer",
-      "Deadline": "2023-04-01",
-      "PriceRange": "$800 - $1,200",
-      "Description": "Build a dynamic e-commerce website with payment integration.",
-      "Bid ": "Bid Now"
-    },
-    {
-        "category":"web development",
-      "JobTitle": "WordPress Developer",
-      "Deadline": "2023-03-20",
-      "PriceRange": "$300 - $500",
-      "Description": "Customize and optimize an existing WordPress site.",
-      "Bid": "Bid Now"
-    },
-    {
-        "category":"web development",
-      "JobTitle": "PHP Developer",
-      "Deadline": "2023-04-10",
-      "PriceRange": "$400 - $700",
-      "Description": "Develop a web application using PHP and MySQL.",
-      "Bid ": "Bid Now"
-    },
-    {       
-
-    "category":"digital marketing",
-      "JobTitle": "Social Media Manager",
-      "Deadline": "2023-03-25",
-      "PriceRange": "$300 - $500",
-      "Description": "Manage social media accounts and create engaging content.",
-      "Bid": "Bid Now"
-    },
-    {  "category":"digital marketing",
-      "JobTitle": "SEO Specialist",
-      "Deadline": "2023-04-05",
-      "PriceRange": "$400 - $600",
-      "Description": "Optimize website content for search engine rankings.",
-      "Bid ": "Bid Now"
-    },
-    {   "category":"digital marketing",
-      "Job Title": "Email Marketing Campaign",
-      "Deadline": "2023-03-15",
-      "Price Range": "$200 - $400",
-      "Short Description": "Create and manage an email marketing campaign for a small business.",
-      "Bid Now Button": "Bid Now"
-    },
-    {  "category":"digital marketing",
-      "JobTitle": "Pay-Per-Click (PPC) Specialist",
-      "Deadline": "2023-04-20",
-      "PriceRange": "$500 - $800",
-      "Description": "Manage PPC advertising campaigns for a digital agency.",
-      "Bid ": "Bid Now"
-    },
-    {  "category":"graphics design",
-      "JobTitle": "Logo Design",
-      "Deadline": "2023-03-10",
-      "PriceRange": "$100 - $200",
-      "Description": "Design a modern logo for a startup company.",
-      "Bid": "Bid Now"
-    },
-    { "category":"graphics design",
-      "JobTitle": "Brochure Design",
-      "Deadline": "2023-03-30",
-      "PriceRange": "$150 - $300",
-      "Description": "Create an eye-catching brochure for a local event.",
-      "Bid": "Bid Now"
-    },
-    {  "category":"graphics design",
-      "JobTitle": "Website Banner Design",
-      "Deadline": "2023-04-10",
-      "PriceRange": "$80 - $150",
-      "Description": "Design attractive banners for a website's homepage.",
-      "Bid": "Bid Now"
-    },
-    { "category":"graphics design",
-      "JobTitle": "Illustration Artwork",
-      "Deadline": "2023-04-15",
-      "PriceRange": "$200 - $400",
-      "Description": "Create custom illustrations for a children's book project.",
-      "Bid": "Bid Now"
-    }
-  ]
-  
+  {
+    "category": "web development",
+    "JobTitle": "Front-end Web Developer",
+    "Deadline": "2023-03-15",
+    "PriceRange": "$500 - $800",
+    "Description": "Create a responsive, user-friendly website for a small business.",
+    "Bid": "Bid Now",
+    "Email": "developer1@example.com"
+  },
+  {
+    "category": "web development",
+    "JobTitle": "Full-stack Web Developer",
+    "Deadline": "2023-04-01",
+    "PriceRange": "$800 - $1,200",
+    "Description": "Build a dynamic e-commerce website with payment integration.",
+    "Bid": "Bid Now",
+    "Email": "developer2@example.com"
+  },
+  {
+    "category": "web development",
+    "JobTitle": "WordPress Developer",
+    "Deadline": "2023-03-20",
+    "PriceRange": "$300 - $500",
+    "Description": "Customize and optimize an existing WordPress site.",
+    "Bid": "Bid Now",
+    "Email": "developer3@example.com"
+  },
+  {
+    "category": "web development",
+    "JobTitle": "PHP Developer",
+    "Deadline": "2023-04-10",
+    "PriceRange": "$400 - $700",
+    "Description": "Develop a web application using PHP and MySQL.",
+    "Bid": "Bid Now",
+    "Email": "developer4@example.com"
+  },
+  {
+    "category": "digital marketing",
+    "JobTitle": "Social Media Manager",
+    "Deadline": "2023-03-25",
+    "PriceRange": "$300 - $500",
+    "Description": "Manage social media accounts and create engaging content.",
+    "Bid": "Bid Now",
+    "Email": "socialmedia@example.com"
+  },
+  {
+    "category": "digital marketing",
+    "JobTitle": "SEO Specialist",
+    "Deadline": "2023-04-05",
+    "PriceRange": "$400 - $600",
+    "Description": "Optimize website content for search engine rankings.",
+    "Bid": "Bid Now",
+    "Email": "seo@example.com"
+  },
+  {
+    "category": "digital marketing",
+    "JobTitle": "Email Marketing Campaign",
+    "Deadline": "2023-03-15",
+    "PriceRange": "$200 - $400",
+    "Description": "Create and manage an email marketing campaign for a small business.",
+    "Bid": "Bid Now",
+    "Email": "email@example.com"
+  },
+  {
+    "category": "digital marketing",
+    "JobTitle": "Pay-Per-Click (PPC) Specialist",
+    "Deadline": "2023-04-20",
+    "PriceRange": "$500 - $800",
+    "Description": "Manage PPC advertising campaigns for a digital agency.",
+    "Bid": "Bid Now",
+    "Email": "ppc@example.com"
+  },
+  {
+    "category": "graphics design",
+    "JobTitle": "Logo Design",
+    "Deadline": "2023-03-10",
+    "PriceRange": "$100 - $200",
+    "Description": "Design a modern logo for a startup company.",
+    "Bid": "Bid Now",
+    "Email": "logo@example.com"
+  },
+  {
+    "category": "graphics design",
+    "JobTitle": "Brochure Design",
+    "Deadline": "2023-03-30",
+    "PriceRange": "$150 - $300",
+    "Description": "Create an eye-catching brochure for a local event.",
+    "Bid": "Bid Now",
+    "Email": "brochure@example.com"
+  },
+  {
+    "category": "graphics design",
+    "JobTitle": "Website Banner Design",
+    "Deadline": "2023-04-10",
+    "PriceRange": "$80 - $150",
+    "Description": "Design attractive banners for a website's homepage.",
+    "Bid": "Bid Now",
+    "Email": "webdesign@example.com"
+  },
+  {
+    "category": "graphics design",
+    "JobTitle": "Illustration Artwork",
+    "Deadline": "2023-04-15",
+    "PriceRange": "$200 - $400",
+    "Description": "Create custom illustrations for a children's book project.",
+    "Bid": "Bid Now",
+    "Email": "illustrations@example.com"
+  }
+]
