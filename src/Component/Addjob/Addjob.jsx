@@ -10,6 +10,7 @@
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Addjob = () => {
     const {user}=useContext(AuthContext)
@@ -21,33 +22,32 @@ const Addjob = () => {
         const form = e.target;
         console.log(form)
         const email = user?.email
-        const jobTitle = form.jobtitle.value;
-        const deadline = form.deadline.value;
-        const description = form.description.value;
-        const minprice = form.minprice.value;
-        const maxPrice = form.maxPrice.value;
-      
+        const JobTitle = form.jobtitle.value;
+        const Deadline = form.deadline.value;
+        const Description = form.description.value;
+        const PriceRange=form.PriceRange.value;
         const category = form.category.value;
-        const FormData = { email, jobTitle,deadline,description, maxPrice, minprice, category }
+        const FormData = { email, JobTitle,Deadline,Description, PriceRange, category }
+      
         console.log(FormData)
-        // fetch('https://phone-shop-server-9jkzunhkt-sumiyaakhi.vercel.app/mobilebrand' ,{
-        //     method:"POST",
-        //     headers:{
-        //         'content-type':"application/json"
-        //     },
-        //     body:JSON.stringify(FormData)
-        // })
+        fetch('http://localhost:5000/jobs',{
+            method:"POST",
+            headers:{
+                'content-type':"application/json"
+            },
+                 body:JSON.stringify(FormData)
+        })
 
-        // .then(res =>res.json())
-        // .then(data =>{
-        //     console.log(data)
-        //     Swal.fire({
-        //         icon:'success',
-        //         title:'Card added successful'
-        //     });
-        //     form.reset();
+        .then(res =>res.json())
+        .then(data =>{
+            console.log(data)
+            Swal.fire({
+                icon:'success',
+                title:'Card added successful'
+            });
+            form.reset();
 
-        // })
+        })
     }
     const handleDeadlineChange = (e) => {
         setDeadline(e.target.value);
@@ -107,26 +107,13 @@ const Addjob = () => {
                     <div className="lg:flex gap-10 ">
                         <div className="form-control md:w-1/2">
                             <label className="label">
-                                <span className="label-text">Min_Price</span>
+                                <span className="label-text">PriceRange</span>
                             </label>
                             <label className="input-group">
 
-                                <input type="text" name="minprice" placeholder="MINPRICE" className="input input-bordered w-full" />
+                                <input type="text" name="PriceRange" placeholder="MINPRICE" className="input input-bordered w-full" />
                             </label>
                         </div>
-                        <div className="form-control md:w-1/2">
-                            <label className="label">
-                                <span className="label-text">Max_Price</span>
-                            </label>
-                            <label className="input-group">
-
-                                <input type="text" name="maxPrice" placeholder="MAXPRICE" className="input input-bordered w-full" />
-                            </label>
-                        </div>
-                    </div>
-
-
-                    <div className="lg:flex gap-10 mb-4">
                         <div className="form-control md:w-1/2">
                             <label className="label">
                                 <span className="label-text">Category</span>
@@ -138,6 +125,11 @@ const Addjob = () => {
                                 <option value="graphics design">graphics design</option>
                             </select>
                         </div>
+                    </div>
+
+
+                    <div className="lg:flex gap-10 mb-4">
+                       
                         
                     </div >
                     <div className="text-center"><input type="submit" className="bg-slate-900 text-white p-4 rounded hover:bg-slate-500" value="Add Product" /></div>
