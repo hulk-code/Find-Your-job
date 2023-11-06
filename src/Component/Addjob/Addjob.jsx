@@ -1,12 +1,4 @@
-// import Swal from "sweetalert2";
-// ● Email of the employer(read-only)
-// ● Job title
-// ● Deadline
-// ● Description
-// ● Category-these are the names of tab options of the homepage(implement a
-// dropdown for selecting category)
-// ● Minimum price
-// ● Maximum price
+
 
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";

@@ -14,7 +14,7 @@ const Jobscard = ({card}) => {
 
     return (
         <div>
-            <div className="card w-9/12 bg-primary text-primary-content mt-10 mb-10" data-aos="flip-left"
+            <div className="card w-9/12 bg-zinc-500 text-primary-content mt-10 mb-10" data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000">
   <div className="card-body">
@@ -25,7 +25,7 @@ const Jobscard = ({card}) => {
         <p>{Deadline}</p>
     </div>
     <div className="card-actions justify-end">
-    <Link to={`/jobdetails/${_id}`}><button className="btn btn-primary">BID NOW</button></Link>
+    <Link to={`/jobdetails/${_id}`}><button className="btn btn-accent">BID NOW</button></Link>
     </div>
   </div>
 </div>

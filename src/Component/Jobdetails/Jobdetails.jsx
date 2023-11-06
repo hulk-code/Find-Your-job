@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import {  useLoaderData } from "react-router-dom";
+import {  Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
@@ -15,7 +15,7 @@ const jobDetail=useLoaderData()
 console.log(jobDetail)
 
 const{Deadline,PriceRange,Email,JobTitle ,_id}=jobDetail
-const isButtonDisabled = user?.email === Email;
+// const isButtonDisabled = user?.email === Email;
     
 const handleCheckedOut=e =>{
     e.preventDefault()
@@ -50,6 +50,10 @@ const handleCheckedOut=e =>{
    })
 
 }
+
+const handlebid=() =>{
+    <Link></Link>
+}
 return (
     <div>
         <h2>Book Services{JobTitle}</h2>
@@ -83,14 +87,17 @@ return (
 
 
 </div >
-<button
-          className={`btn-primary btn-block mt-5 mb-5${isButtonDisabled ? ' disabled' : ''}`}
+<div className="text-center font-bold">
+{/* <button
+          className={`btn-primary  mt-5 mb-5 p-3  ${isButtonDisabled ? ' disabled' : ''}`}
           type="submit"
           value="order confirm"
           disabled={isButtonDisabled}
         >
           Bid on the project
-        </button>
+        </button> */}
+        <button onClick={handlebid} className={ user?.email === Email ? "disabled" : "btn bg-blue-400 text-white btn-xs"}>Bid Your Project</button>
+</div>
        </form>
     </div>
 );

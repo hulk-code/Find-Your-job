@@ -8,6 +8,8 @@ import Jobdetails from "../Component/Jobdetails/Jobdetails";
 import MyBid from "../Component/MyBid/MyBid";
 import Addjob from "../Component/Addjob/Addjob";
 import MyPostedJob from "../Component/MyPostedJob/MyPostedJob";
+import Update from "../Component/Update/Update";
+import PrivetRoute from "../Component/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -29,19 +31,25 @@ const router = createBrowserRouter([
       },
       {
         path: "/mybids",
-        element: <MyBid></MyBid>
+        element:<PrivetRoute> <MyBid></MyBid></PrivetRoute>
       },
       {
         path: "/addjob",
-        element: <Addjob></Addjob>
+        element: <PrivetRoute><Addjob></Addjob></PrivetRoute>
       },
       {
         path: "/mypostedjobs",
-        element: <MyPostedJob></MyPostedJob>
+        element: <PrivetRoute><MyPostedJob></MyPostedJob></PrivetRoute>
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader:({params}) =>fetch(`http://localhost:5000/job/${params.id}`)
+        
       },
       {
         path: "/jobdetails/:id",
-        element: <Jobdetails></Jobdetails>,
+        element:<PrivetRoute> <Jobdetails></Jobdetails></PrivetRoute>,
      
         loader:({params}) =>fetch(`http://localhost:5000/jobs/${params.id}`)
       },
