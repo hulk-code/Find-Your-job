@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
@@ -11,8 +11,10 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Jobdetails = () => {
     const{user}=useContext(AuthContext)
-const jobDetails=useLoaderData()
-const{Deadline,PriceRange,Email,JobTitle ,_id}=jobDetails
+const jobDetail=useLoaderData()
+console.log(jobDetail)
+
+const{Deadline,PriceRange,Email,JobTitle ,_id}=jobDetail
 const isButtonDisabled = user?.email === Email;
     
 const handleCheckedOut=e =>{
@@ -20,17 +22,17 @@ const handleCheckedOut=e =>{
     const form=e.target;
     const useremail=user?.email
     const deadline=form.deadline.value
-    const price=form.price.value
+    
     const owneremail=form.owneremail.value
     
     const order={
         
-        customeremail:useremail,
-        Owneremail:owneremail,
-        
+        email:useremail,
+        JobTitle,
+        owneremail:owneremail,
         deadline,
         service_id:_id,
-        price,
+        
        
     }
    console.log(order);
@@ -68,7 +70,7 @@ return (
 </div>
 <div className="form-control">
 <label className="label">
-    <span className="label-text">Ownwe Email</span>
+    <span className="label-text">Owner Email</span>
 </label>
 <input type="email" placeholder="phone" name='owneremail' defaultValue={Email} readOnly className="input input-bordered" required />
 </div>
