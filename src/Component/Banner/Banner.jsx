@@ -11,7 +11,7 @@ const Banner = () => {
     </div>
     <div className="absolute  transform -translate-y-1/2 left-5 right-5 bottom-0 space-y-4 p-4 bg-gradient-to-r from-[#151515] to-[ #15151500 ]">
      <div className="text-white w-1/3 ">
-     <p className="text-5xl font-bold ">FIND YOUR DREAM JOB </p>
+     <p className="text-5xl font-bold ">Get Hired: Find Your Dream Job Here</p>
       <p>There are many variations of Job available, Search Your Job</p>
      </div>
       

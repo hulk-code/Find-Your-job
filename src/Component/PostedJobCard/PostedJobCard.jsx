@@ -44,7 +44,7 @@ const PostedJobCard = ({ postcard }) => {
     };
    
     return (
-        <div>
+        <div className="my-5">
             <div className="flex flex-col text-center bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
                 <h3 className="text-lg font-bold text-gray-800 dark:text-white">
                     Job Title: {JobTitle}

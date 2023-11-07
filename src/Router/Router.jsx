@@ -10,6 +10,7 @@ import Addjob from "../Component/Addjob/Addjob";
 import MyPostedJob from "../Component/MyPostedJob/MyPostedJob";
 import Update from "../Component/Update/Update";
 import PrivetRoute from "../Component/PrivateRoute/PrivateRoute";
+import BidRequest from "../Component/BidRequest/BidRequest";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
      
         loader:({params}) =>fetch(`http://localhost:5000/jobs/${params.id}`)
       },
+      {
+        path:'/bidrequests',
+        element:<BidRequest></BidRequest>
+      }
     ],
     },
   ]);

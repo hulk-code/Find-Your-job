@@ -14,7 +14,7 @@ const Jobscard = ({card}) => {
 
     return (
         <div className=''>
-            <div className="card w-9/12 bg-zinc-500 text-primary-content mt-10 mb-10" data-aos="flip-left"
+            <div className="card w-9/12 bg-gray-400 text-primary-content mt-10 mb-10" data-aos="flip-left"
      data-aos-easing="ease-out-cubic"
      data-aos-duration="2000">
   <div className="card-body">

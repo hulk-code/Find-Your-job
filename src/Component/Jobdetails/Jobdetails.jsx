@@ -3,19 +3,12 @@ import {  Link, Navigate, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
-
-
-
-
-
-
-
 const Jobdetails = () => {
     const{user}=useContext(AuthContext)
 const jobDetail=useLoaderData()
 console.log(jobDetail)
 
-const{Deadline,PriceRange,Email,JobTitle ,_id ,Description}=jobDetail
+const{Deadline,PriceRange,Email,JobTitle ,_id ,Description}=jobDetail;
 const [hasPlacedBid, setHasPlacedBid] = useState(false);
     
 const handleCheckedOut=e =>{
@@ -33,7 +26,8 @@ const handleCheckedOut=e =>{
         owneremail:owneremail,
         deadline,
         service_id:_id,
-        
+        status:"Pending",
+        price:PriceRange,
        
     }
    console.log(order);
@@ -56,8 +50,8 @@ const handleCheckedOut=e =>{
       icon: "success",
     }).then((result) => {
       if (result.isConfirmed) {
-      
-       <Navigate to='/mybids'></Navigate>
+        window.location.href = '/mybids';
+      //  <Navigate to='/mybids'></Navigate>
       }
     });
 
@@ -130,7 +124,7 @@ return (
 <label className="label">
     <span className="label-text">Owner Email</span>
 </label>
-<input type="email" placeholder="phone" name='owneremail' defaultValue={Email} readOnly className="input input-bordered" required />
+<input type="email" placeholder="Owner email" name='owneremail' defaultValue={Email} readOnly className="input input-bordered" required />
 </div>
 <div className="form-control">
 <label className="label">
@@ -146,8 +140,8 @@ return (
 <button onClick={handlebid}
             className={
               user?.email === Email || hasPlacedBid
-                ? "disabled btn bg-blue-400 text-white btn-xs"
-                : "btn bg-blue-400 text-white btn-xs"
+                ? "mt-5 btn-disabled bg-slate-400 text-white p-3 rounded-xl "
+                : "btn mt-5 bg-blue-400 text-white"
             }
            
           >
