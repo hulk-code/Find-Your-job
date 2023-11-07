@@ -1,6 +1,7 @@
-import { useContext } from "react";
-import {  Link, useLoaderData } from "react-router-dom";
+import { useContext, useState } from "react";
+import {  Link, Navigate, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -14,8 +15,8 @@ const Jobdetails = () => {
 const jobDetail=useLoaderData()
 console.log(jobDetail)
 
-const{Deadline,PriceRange,Email,JobTitle ,_id}=jobDetail
-// const isButtonDisabled = user?.email === Email;
+const{Deadline,PriceRange,Email,JobTitle ,_id ,Description}=jobDetail
+const [hasPlacedBid, setHasPlacedBid] = useState(false);
     
 const handleCheckedOut=e =>{
     e.preventDefault()
@@ -48,16 +49,69 @@ const handleCheckedOut=e =>{
    .then(data => {
     console.log(data)
    })
+   setHasPlacedBid(true);
+    Swal.fire({
+      title: "Bid Placed!",
+      text: "Your bid has been placed successfully.",
+      icon: "success",
+    }).then((result) => {
+      if (result.isConfirmed) {
+      
+       <Navigate to='/mybids'></Navigate>
+      }
+    });
 
 }
 
 const handlebid=() =>{
-    <Link></Link>
+   
 }
 return (
+    <div className="mb-5">
+      
+        
+<div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/component/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:w-full before:h-full before:-z-[1] before:transform before:-translate-x-1/2 dark:before:bg-[url('https://preline.co/assets/svg/component/squared-bg-element-dark.svg')]">
+  <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+    
+    
+    
+
+    
+    <div className="mt-5 max-w-xl text-center mx-auto">
+      <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl">
+    {JobTitle}
+      </h1>
+    </div>
+    
+
+    <div className="mt-5 max-w-3xl text-center mx-auto">
+      <p className="text-lg text-gray-50">{Description}</p>
+    </div>
+<div className="flex justify-center text-white">
+    <div >
+        PriceRange:{PriceRange}
+    </div>
     <div>
-        <h2>Book Services{JobTitle}</h2>
-       <form onSubmit={handleCheckedOut}>
+        DeadLine:{Deadline}
+    </div>
+</div>
+   
+    
+   
+  </div>
+</div>
+
+
+
+
+
+
+
+<div >
+    <p className="text-5xl text-center text-bold lg:p-5">Place Your Bid</p>
+    
+<div className="w-9/12 mx-auto">
+<form onSubmit={handleCheckedOut}>
        <div className="grid grid-cols-2 gap-5">
 
 <div className="form-control">
@@ -88,17 +142,21 @@ return (
 
 </div >
 <div className="text-center font-bold">
-{/* <button
-          className={`btn-primary  mt-5 mb-5 p-3  ${isButtonDisabled ? ' disabled' : ''}`}
-          type="submit"
-          value="order confirm"
-          disabled={isButtonDisabled}
-        >
-          Bid on the project
-        </button> */}
-        <button onClick={handlebid} className={ user?.email === Email ? "disabled" : "btn bg-blue-400 text-white btn-xs"}>Bid Your Project</button>
+
+<button onClick={handlebid}
+            className={
+              user?.email === Email || hasPlacedBid
+                ? "disabled btn bg-blue-400 text-white btn-xs"
+                : "btn bg-blue-400 text-white btn-xs"
+            }
+           
+          >
+            {hasPlacedBid ? "Bid Placed" : "Bid Your Project"}
+          </button>
 </div>
        </form>
+</div>
+</div>
     </div>
 );
 };

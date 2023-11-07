@@ -15,13 +15,13 @@ const JobsCategory = () => {
     console.log(cards)
     return (
         <div>
-            <div className="tabs tabs-boxed flex justify-between text-lg font-bold">
+            <div className="tabs tabs-boxed flex justify-center text-lg font-bold">
                 <a className={`tab ${categoryname === 'web development' ? 'tab-active' : ''}`} onClick={() => setCategoryname('web development')}>Web Development</a>
                 <a className={`tab ${categoryname === 'digital marketing' ? 'tab-active' : ''}`} onClick={() => setCategoryname('digital marketing')}>Digital Marketing</a>
                 <a className={`tab ${categoryname === 'graphics design' ? 'tab-active' : ''}`} onClick={() => setCategoryname('graphics design')}>Graphics Design</a>
             </div>
 
-            <div className="cards-container flex gap-6 ">
+            <div className="cards-container w-9/12  gird mx-auto lg:grid-cols-3 gap-6 ">
                 {
                     cards.map(card => <Jobscard card={card} key={card._id}></Jobscard>)
                 }

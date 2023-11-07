@@ -1,39 +1,48 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const PostedJobCard = ({ postcard }) => {
-    const handleDelete = _id => {
-        console.log(_id)
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-
-                fetch(`http://localhost:5000/jobs/${_id}`, {
-                    method: "DELETE"
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                        if (data.deletedCount > 0)
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
-                                icon: "success"
-                            });
-                    })
+    const [isDeleted, setIsDeleted] = useState(false); 
+    const { _id,JobTitle, category, Deadline, PriceRange, Description } = postcard;
+    const handleDelete = (_id) => {
+      
+  
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/jobs/${_id}`, {
+            method: "DELETE"
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success"
+                }).then(() => {
                 
-            }
-        });
-    }
-    const { _id, JobTitle, category, Deadline, PriceRange, Description } = postcard;
+                  if (!isDeleted) {
+                    setIsDeleted(true); 
+                    window.location.reload();
+                  }
+                });
+              }
+            });
+        }
+      });
+    };
+   
     return (
         <div>
             <div className="flex flex-col text-center bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
