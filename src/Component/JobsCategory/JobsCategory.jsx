@@ -8,7 +8,7 @@ const JobsCategory = () => {
     const [cards, setCards] = useState([]);
     useEffect(() => {
         // Fetch data based on the selected category
-        axios.get(`https://your-job-server.vercel.app/jobs?category=${categoryname}`)
+        axios.get(`http://localhost:5000/jobs?category=${categoryname}`)
             .then(res => setCards(res.data))
 
     }, [categoryname]);

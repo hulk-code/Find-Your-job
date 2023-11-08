@@ -11,7 +11,7 @@ const BidRequest = () => {
     // console.log(user)
     const [control, setControl] = useState(false)
     const[booked ,setBooked]=useState([])
-    const url = `https://your-job-server.vercel.app/bookings`
+    const url = `http://localhost:5000/bookings`
     useEffect(() => {
         fetch(url )
             .then(res => res.json())
@@ -22,7 +22,7 @@ const BidRequest = () => {
     }, [control])
 
     const handleRejected = (user) => {
-        fetch(`https://your-job-server.vercel.app/bidRequest/rejected/${user._id}`, {
+        fetch(`http://localhost:5000/bidRequest/rejected/${user._id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())
@@ -41,7 +41,7 @@ const BidRequest = () => {
           });
       };
     const handleProgress = (user) => {
-        fetch(`https://your-job-server.vercel.app/bidRequest/progress/${user._id}`, {
+        fetch(`http://localhost:5000/bidRequest/progress/${user._id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())

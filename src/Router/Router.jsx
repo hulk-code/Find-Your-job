@@ -45,14 +45,14 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <Update></Update>,
-        loader:({params}) =>fetch(`https://your-job-server.vercel.app/job/${params.id}`)
+        loader:({params}) =>fetch(`http://localhost:5000/job/${params.id}`)
         
       },
       {
         path: "/jobdetails/:id",
         element:<PrivetRoute> <Jobdetails></Jobdetails></PrivetRoute>,
      
-        loader:({params}) =>fetch(`https://your-job-server.vercel.app/jobs/${params.id}`)
+        loader:({params}) =>fetch(`http://localhost:5000/jobs/${params.id}`)
       },
       {
         path:'/bidrequests',

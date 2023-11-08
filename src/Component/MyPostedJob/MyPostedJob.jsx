@@ -9,7 +9,7 @@ const MyPostedJob = () => {
     const { user } = useContext(AuthContext)
     const [posts, setposts] = useState([])
     useEffect(() => {
-        fetch(`https://your-job-server.vercel.app/job?email=${user?.email}`)
+        fetch(`http://localhost:5000/job?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setposts(data)

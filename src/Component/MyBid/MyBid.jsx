@@ -8,7 +8,7 @@ const MyBid = () => {
   console.log(user)
   const [booked, setBooked] = useState([])
   const [disable, setDisable] = useState(false)
-  const url = `https://your-job-server.vercel.app/bookings?email=${user?.email}`
+  const url = `http://localhost:5000/bookings?email=${user?.email}`
   useEffect(() => {
     fetch(url)
       .then(res => res.json())

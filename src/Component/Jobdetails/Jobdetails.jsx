@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import {  Link, Navigate, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -8,16 +8,15 @@ const Jobdetails = () => {
 const jobDetail=useLoaderData()
 console.log(jobDetail)
 
-const{Deadline,PriceRange,Email,JobTitle ,_id ,Description}=jobDetail;
+const {Deadline,PriceRange,email,JobTitle ,_id ,Description}=jobDetail;
 const [hasPlacedBid, setHasPlacedBid] = useState(false);
     
 const handleCheckedOut=e =>{
     e.preventDefault()
     const form=e.target;
-    const useremail=user?.email
-    const deadline=form.deadline.value
-    
-    const owneremail=form.owneremail.value
+    const useremail=user?.email;
+    const deadline=form.deadline.value;
+    const owneremail=form.owneremail.value;
     
     const order={
         
@@ -32,7 +31,7 @@ const handleCheckedOut=e =>{
     }
    console.log(order);
 
-   fetch('https://your-job-server.vercel.app/bookings' ,{
+   fetch('http://localhost:5000/bookings' ,{
     method:"POST",
     headers:{
         'content-type':'application/json'
@@ -124,7 +123,7 @@ return (
 <label className="label">
     <span className="label-text">Owner Email</span>
 </label>
-<input type="email" placeholder="Owner email" name='owneremail' defaultValue={Email} readOnly className="input input-bordered" required />
+<input type="email" placeholder="Owner email" name='owneremail' defaultValue={email} readOnly className="input input-bordered" required />
 </div>
 <div className="form-control">
 <label className="label">
@@ -139,7 +138,7 @@ return (
 
 <button onClick={handlebid}
             className={
-              user?.email === Email || hasPlacedBid
+              user?.email === email || hasPlacedBid
                 ? "mt-5 btn-disabled bg-slate-400 text-white p-3 rounded-xl "
                 : "btn mt-5 bg-blue-400 text-white"
             }

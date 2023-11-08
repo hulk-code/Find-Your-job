@@ -22,7 +22,7 @@ const Update = () => {
         const category = form.category.value;
         const FormData = { email, JobTitle,Deadline,Description, PriceRange, category }
         console.log(FormData)
-        fetch(`https://your-job-server.vercel.app/jobs/${_id}` ,{
+        fetch(`http://localhost:5000/jobs/${_id}` ,{
               method:"PUT",
               headers:{
                   'content-type':"application/json"
