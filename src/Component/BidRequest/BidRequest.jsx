@@ -8,7 +8,8 @@ import Swal from "sweetalert2";
 const BidRequest = () => {
     const { user } = useContext(AuthContext)
     const email = user.email;
-    console.log(user)
+    // console.log(user)
+    const [control, setControl] = useState(false)
     const[booked ,setBooked]=useState([])
     const url = `http://localhost:5000/bookings`
     useEffect(() => {
@@ -18,7 +19,7 @@ const BidRequest = () => {
               setBooked(data)
               console.log(data);
             })
-    }, [url])
+    }, [control])
 
     const handleRejected = (user) => {
         fetch(`http://localhost:5000/bidRequest/rejected/${user._id}`, {
@@ -28,11 +29,11 @@ const BidRequest = () => {
           .then((data) => {
             console.log(data);
             if (data.modifiedCount) {
-            //   refetch();
+              setControl(!control)
               Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `Status is ${user.status} now`,
+                title:'status is update now',
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -47,11 +48,11 @@ const BidRequest = () => {
           .then((data) => {
             console.log(data);
             if (data.modifiedCount) {
-            //   refetch();
+            setControl(!control)
               Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `Status is ${user.status} now`,
+                title: 'status is update now',
                 showConfirmButton: false,
                 timer: 1500,
               });
@@ -92,12 +93,12 @@ const BidRequest = () => {
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{book.deadline}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{book.price}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{book.status}</td>
-              {/* <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{book.status}</td> */}
+              
               <td >
-               <button  onClick={()=>{handleProgress(book)}} className={book.status === "In Progress" || "Rejected" ?  "disable  text-white rounded" : "btn btn-primary"}>Accept</button>
+               <button  onClick={()=>{handleProgress(book)}} className={book.status === "In Progress"|| book.status === "Cancelled" ?  "disable text-slate-700" : "btn btn-primary"}>Accept</button>
               </td>
               <td >
-               <button  onClick={()=>{handleRejected(book)}} className={book.status === "In Progress" || "Rejected" ? "disable  text-white rounded" : "btn btn-primary"}>Reject</button>
+               <button  onClick={()=>{handleRejected(book)}} className={book.status === "In Progress" || book.status === "Cancelled" ? "disable  text-slate-700 " : "btn btn-primary"}>Reject</button>
               </td>
             </tr>
           

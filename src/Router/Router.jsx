@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/bidrequests',
-        element:<BidRequest></BidRequest>
+        element:<PrivetRoute><BidRequest></BidRequest></PrivetRoute>
       }
     ],
     },
