@@ -60,11 +60,11 @@ const Navber = () => {
       </ul>
     </div>
     <div className="avatar">
-  <div className="w-24 rounded-full">
+  <div className="w-8 md:w-24 rounded-full">
     <img src="https://i.ibb.co/hc0BnsD/freelogo.jpg" />
   </div>
 </div>
-    <p className="ml-5 text-4xl">Free<span className="text-bold text-orange-300">Lancer</span></p>
+    <p className="md:ml-5 md:text-4xl">Free<span className="text-bold text-orange-300">Lancer</span></p>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -78,7 +78,7 @@ const Navber = () => {
      }
        {
         user && <div className="avatar">
-        <div className="w-10 lg:mr-3 lg:ml-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+        <div className="w-6 md:w-10 lg:mr-3 lg:ml-3 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
           <img  src={user?.photoURL} alt="" />
         </div>
       </div>
