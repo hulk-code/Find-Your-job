@@ -2,13 +2,13 @@
 
 const OurCommunity = () => {
     return (
-       <div className="flex items-center gap-5 mt-10 mb-10">
+       <div className="md:flex items-center gap-5 mt-10 mb-10">
          <div className="w-1/2">
             <div >
                 <h1 className="text-5xl font-bold mb-1 text-center">
                     Revolutionizing the Job Search Experience
                 </h1>
-                <p className="px-14 py-2">
+                <p className="mx-4 text-center md:px-14 py-2">
                     Our job finding website is a powerful platform designed to connect job seekers with their ideal employment opportunities.With a user-friendly interface and advanced search capabilities, our site simplifies the job search process, making it easier for candidates to find the right job.
                 </p>
             </div>
@@ -32,8 +32,3 @@ const OurCommunity = () => {
 };
 
 export default OurCommunity;
-{/* <div className="hero-content flex-col lg:flex-row">
-                <div className='lg:w-1/2 relative'>
-                    <img src={person} className="w-3/4 rounded-lg shadow-2xl" />
-                    <img src={parts} className="w-1/2 absolute right-5 top-1/2 rounded-lg border-8 border-white shadow-2xl" />
-                </div> */}

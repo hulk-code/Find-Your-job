@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import MyBidCard from "../Mybidcard/MyBidCard";
 import { Helmet } from "react-helmet";
 
 
@@ -9,8 +8,7 @@ const MyBid = () => {
   console.log(user)
   const [booked, setBooked] = useState([])
   const [disable, setDisable] = useState(false)
-  const [sort, setSort] = useState("");
-  const url = `http://localhost:5000/bookings?email=${user?.email}`
+  const url = `https://your-job-server.vercel.app/bookings?email=${user?.email}`
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
@@ -24,7 +22,6 @@ const MyBid = () => {
   }
 
   
-  console.log(sort);
   return (
     <div className="m-10">
       <Helmet>

@@ -22,7 +22,7 @@ const Addjob = () => {
         const FormData = { email, JobTitle, Deadline, Description, PriceRange, category }
 
         console.log(FormData)
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://your-job-server.vercel.app/jobs', {
             method: "POST",
             headers: {
                 'content-type': "application/json"

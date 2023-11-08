@@ -19,7 +19,7 @@ const PostedJobCard = ({ postcard }) => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/jobs/${_id}`, {
+          fetch(`https://your-job-server.vercel.app/jobs/${_id}`, {
             method: "DELETE"
           })
             .then((res) => res.json())
