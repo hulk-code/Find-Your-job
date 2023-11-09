@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { motion } from 'framer-motion';
 
 const Jobdetails = () => {
     const{user}=useContext(AuthContext)
@@ -135,8 +136,11 @@ return (
 
 </div >
 <div className="text-center font-bold">
-
-<button onClick={handlebid}
+<motion.button
+    whileHover={{ scale: 1.2 }}
+    whileTap={{ scale: 1.4 }}
+  >
+          <button onClick={handlebid}
             className={
               user?.email === email || hasPlacedBid
                 ? "mt-5 btn-disabled bg-slate-400 text-white p-3 rounded-xl "
@@ -146,6 +150,8 @@ return (
           >
             {hasPlacedBid ? "Bid Placed" : "Bid Your Project"}
           </button>
+            </motion.button>
+
 </div>
        </form>
 </div>

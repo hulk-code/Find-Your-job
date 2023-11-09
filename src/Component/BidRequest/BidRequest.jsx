@@ -4,22 +4,38 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useState } from "react";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const BidRequest = () => {
     const { user } = useContext(AuthContext)
     const email = user.email;
     // console.log(user)
+
+const {isPending, refetch, data : bookings} = useQuery({
+  queryKey: ['users'],
+  queryFn: async () =>{
+    const res = await fetch('http://localhost:5000/bookings');
+    return res.json();
+  }
+})
+
+console.log(bookings);
+
+
+
+
+
     const [control, setControl] = useState(false)
-    const[booked ,setBooked]=useState([])
-    const url = `http://localhost:5000/bookings`
-    useEffect(() => {
-        fetch(url )
-            .then(res => res.json())
-            .then(data => {
-              setBooked(data)
-              console.log(data);
-            })
-    }, [control])
+    // const[booked ,setBooked]=useState([])
+    // const url = `http://localhost:5000/bookings`
+    // useEffect(() => {
+    //     fetch(url )
+    //         .then(res => res.json())
+    //         .then(data => {
+    //           setBooked(data)
+    //           console.log(data);
+    //         })
+    // }, [control])
 
     const handleRejected = (user) => {
         fetch(`http://localhost:5000/bidRequest/rejected/${user._id}`, {
@@ -29,7 +45,8 @@ const BidRequest = () => {
           .then((data) => {
             console.log(data);
             if (data.modifiedCount) {
-              setControl(!control)
+              // setControl(!control)
+              refetch()
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -40,6 +57,13 @@ const BidRequest = () => {
             }
           });
       };
+
+      if(isPending){
+<img src="https://i.ibb.co/ZxbPkRq/loading-icon-on-black-vector-24544990.jpg" alt="" />
+        // <span className="loading loading-dots loading-lg"></span>
+      }
+
+
     const handleProgress = (user) => {
         fetch(`http://localhost:5000/bidRequest/progress/${user._id}`, {
           method: "PATCH",
@@ -49,6 +73,7 @@ const BidRequest = () => {
             console.log(data);
             if (data.modifiedCount) {
             setControl(!control)
+            refetch()
               Swal.fire({
                 position: "top-end",
                 icon: "success",
@@ -85,7 +110,7 @@ const BidRequest = () => {
           <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
            
 {
-        booked.filter(book => email === book.owneremail).map(book =>
+        bookings?.filter(book => email === book.owneremail).map(book =>
           // const{JobTitle,Deadline,price,email,owneremail ,status}=book
           <tr key={book._id} className="odd:bg-white even:bg-gray-100 dark:odd:bg-slate-900 dark:even:bg-slate-800">
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{book.JobTitle}</td>

@@ -86,7 +86,7 @@ const Register = () => {
   return (
     <div>
      
-      <div className="hero min-h-screen bg-base-200 bg-[url('https://i.ibb.co/2KLRVCT/regibg.png')]" data-aos="fade-up">
+      <div className="hero min-h-screen bg-slate-300 md:bg-[url('https://i.ibb.co/2KLRVCT/regibg.png')]" data-aos="fade-up">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Register Here!</h1>
@@ -95,7 +95,7 @@ const Register = () => {
           <div className="card flex-shrink-0 w-full max-w-sm  ">
             <form className="card-body"  onSubmit={handleRegister}>
                
-              <div className="flex gap-5 font-bold">
+              <div className="md:flex gap-5 font-bold">
               <div>
               <div className="form-control">
                 <label className="label">

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet";
+import { motion } from 'framer-motion';
 
 
 const MyBid = () => {
@@ -53,7 +54,13 @@ const MyBid = () => {
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{book.deadline}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{book.status}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                          <button onClick={handleComplete} className={book.status === "Cancelled" || book.status === "Pending" || disable ? "disable " : "btn btn-primary"}>Complete</button>
+                        <motion.button
+    whileHover={{ scale: 1.2 }}
+    whileTap={{ scale: 1.4 }}
+  >
+           <button onClick={handleComplete} className={book.status === "Cancelled" || book.status === "Pending" || disable ? "disable " : "btn btn-primary"}>Complete</button>
+            </motion.button>
+                          
                         </td>
                       </tr>
 

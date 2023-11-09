@@ -8,7 +8,8 @@ const PrivetRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation();
     if (loading) {
-        return <span className="loading loading-ring loading-lg"></span>
+        return <img className="w-screen h-screen" src="https://i.ibb.co/ZxbPkRq/loading-icon-on-black-vector-24544990.jpg" alt="" />
+
     }
     if (user?.email) {
 

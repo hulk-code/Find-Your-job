@@ -63,7 +63,7 @@ useEffect(() => {
         <div>
         
          
-            <div className="hero min-h-screen bg-[url('https://i.ibb.co/RphMz4v/loginbg.jpg')]" data-aos="fade-down">
+            <div className="hero min-h-screen bg-slate-300  md:bg-[url('https://i.ibb.co/RphMz4v/loginbg.jpg')]" data-aos="fade-down">
   <div className="hero-content flex-col ">
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold text-gre">Login Here!</h1>
